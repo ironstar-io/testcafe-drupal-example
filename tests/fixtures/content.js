@@ -5,7 +5,7 @@ const baseUrl = getBaseUrl();
 fixture("Content (node) tests").page(baseUrl);
 
 test("Create article content", async t => {
-  const nodeType = "article";
+  const nodeType = "testcafe";
   const node = new Node(t, nodeType, baseUrl);
   const nodeFormExists = Selector(
     "#node-" + nodeType.replace(/_/g, "-") + "-form"
@@ -21,6 +21,8 @@ test("Create article content", async t => {
   );
   await node.chooseSelectFieldOption("edit-body-0-format--2", "Full HTML");
   await node.checkSelectFieldHasOption("edit-body-0-format--2", "Basic HTML");
+  // Upload an image to file field.
+  await node.addImageToField("edit-field-image-0-upload", { alt: "my alt text", title: "my title text" });
   await node.saveNode();
   // await node.checkOnNodePage();
 });
