@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: "https://testcafe-toktestdb.local.tokaido.io:5154/",
+  baseUrl: "https://haproxy-test:8443/",
   node: {
     create: {
       path: "/node/add",

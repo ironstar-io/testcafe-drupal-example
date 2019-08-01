@@ -11,20 +11,22 @@ const runTests = async () => {
     //   `Running tests can be viewed by visiting ${remoteConnection.url}`
     // );
 
+    console.log("Starting test runner...");
+
     const failedCount = await runner
       .src(["tests/fixtures"])
-      .browsers(["chrome:headless"])
+      .browsers(["chromium:headless"])
       .screenshots(
-        "tests/reports/screenshots/",
+        `${__dirname}/reports/screenshots/`,
         true,
         "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
       )
       .video(
-        "tests/reports/videos/",
+        `${__dirname}/reports/videos/`,
         {
           singleFile: true,
           failedOnly: true,
-          pathPattern: "${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.mp4"
+          pathPattern: "${DATE}_${TIME}/${USERAGENT}/${FILE_INDEX}.mp4"
         },
         {
           r: 20,
@@ -35,7 +37,7 @@ const runTests = async () => {
         "spec",
         {
           name: "xunit",
-          output: "tests/reports/report.xml"
+          output: `${__dirname}/reports/report.xml`
         }
       ])
       .run();

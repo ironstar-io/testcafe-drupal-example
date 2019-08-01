@@ -4,4 +4,6 @@
 
 // Unison file sync file.
 ._*
+
+.DS_Store
 tests/reports/report.xml
