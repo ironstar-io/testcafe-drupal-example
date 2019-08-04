@@ -34,22 +34,9 @@ test("Create article content", async t => {
   );
   // Upload an image to Drupal image field.
   await node.addImageToField("edit-field-image-0-upload", {
-    alt: "my alt text",
-    title: "my title text"
+    alt: "my alt text"
   });
-  // Remove image from Drupal image field.
-  await node.removeImageFromField("edit-field-image-0-upload");
-  // Upload a PDF to Drupal file field.
-  await node.addFileToField("edit-field-file-0-upload");
-  // Upload images to multivalue Drupal image field.
-  await node.addImageToField("edit-field-multi-images-0-upload", {
-    alt: "My alt text",
-    title: "My title text"
-  });
-  await node.addImageToField("edit-field-multi-images-1-upload", {
-    alt: "My alt text",
-    title: "My title text"
-  });
+
   // Save node.
   await node.saveNode();
 });
